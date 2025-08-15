@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Dodaj Plejlistu">Dodaj Plejlistu</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <div style="display: flex; flex-direction: row; gap: 10%">
+        <div>
+            <h1>Dodaj Plejlistu</h1>
+
+            <form th:action="@{/playlists}" method="post" th:object="${playlist}" class="add-form">
+
+                <label for="name">*Naslov:</label>
+                <input type="text" id="name" th:field="*{name}" required />
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red"></div>
+
+                <label for="description">Opis:</label>
+                <textarea id="description" th:field="*{description}" rows="4" cols="50"></textarea>
+
+                <label for="creatorName">Kreator:</label>
+                <input type="text" id="creatorName" th:field="*{creatorName}" />
+
+                <label for="creationDate">Datum kreiranja:</label>
+                <input type="date" id="creationDate" th:field="*{creationDate}" required />
+                <div th:if="${#fields.hasErrors('creationDate')}" th:errors="*{creationDate}" style="color:red"></div>
+
+                <label for="status">Status:</label>
+                <select id="status" th:field="*{publicPlaylist}">
+                    <option th:value="${true}">Javna</option>
+                    <option th:value="${false}">Privatna</option>
+                </select>
+
+                <label>Izaberi pesme:</label>
+                <div th:each="song : ${allSongs}">
+                    <input type="checkbox" name="songIds"
+                           th:value="${song.id}"
+                           th:checked="${playlist.songIds != null and playlist.songIds.contains(song.id)}" />
+                    <span th:text="${song.title}"></span>
+                    <br/>
+                </div>
+
+                <button type="submit">Sačuvaj</button>
+            </form>
+        </div>
+
+        <div>
+            <h1>Pesme u plejlisti</h1>
+
+            <ul class="add-form">
+                <li th:each="song : ${songs}">
+                    <span th:text="${song.title}"></span>
+                    <form th:action="@{/playlists/{playlistId}/remove-song/{songId}(playlistId=${playlist.id}, songId=${song.id})}" method="post">
+                        <button type="submit">Ukloni</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+</body>
+</html>

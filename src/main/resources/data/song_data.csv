@@ -1,0 +1,16 @@
+song_id,title,duration,album_id,artist_id,genre_id,release_date,is_explicit
+0,Style,231,0,0,0,2014-10-27,false
+1,Believer,204,1,1,1,2017-06-23,false
+2,Hello,295,2,2,3,2015-11-20,false
+3,ON,246,3,3,9,2020-02-21,false
+4,Chantaje,196,4,4,6,2017-05-26,false
+5,Hymn for the Weekend,258,5,5,1,2015-12-04,false
+6,God's Plan,199,6,6,2,2018-06-29,true
+7,Blinding Lights,200,7,7,3,2020-03-20,false
+8,Levitating,203,8,8,0,2020-03-27,false
+9,Amerika,202,9,9,8,2004-09-27,true
+10,Do I Wanna Know?,272,10,10,10,2013-09-09,false
+11,Formation,206,11,11,3,2016-04-23,true
+12,Shape of You,233,12,12,0,2017-03-03,false
+13,Rap God,364,13,13,2,2013-11-05,true
+14,Three Little Birds,181,14,14,5,1984-05-08,false

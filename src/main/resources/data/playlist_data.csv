@@ -1,0 +1,11 @@
+playlist_id,name,description,creator,created_at,is_public,song_ids
+0,Workout Mix,High energy for the gym,User1,2023-01-10,true,1;3;5;7
+1,Chill Vibes,Relax and unwind,User2,2022-11-20,true,2;4;6;10
+2,Throwbacks,Old school hits,User3,2021-07-12,false,0;9;12
+3,Focus Mode,Instrumental concentration music,User4,2023-05-01,true,11;13;14
+4,Romantic Hits,Best of love songs,User5,2022-02-14,true,2;8;12
+5,Party Time,Let’s dance!,User6,2023-12-31,true,5;6;7;13
+6,Rock Legends,Top rock songs ever,User7,2021-08-09,false,9;10;13
+7,Sunday Morning,Easy listening,User8,2024-01-21,true,4;8;14
+8,Reggae Roots,Roots and vibes,User9,2023-06-30,true,14
+9,My Private Mix,Only for me,User10,2024-04-02,false,0;1;2

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Pesme">Pesme</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h1>Pesme</h1>
+
+    <form action="/songs/search" method="get" class="search-form">
+        <input type="text" name="query" placeholder="Pretraga po naslovu"
+               th:value="${query}"
+        />
+
+        <div class="filters">
+            <p>Filtriraj:</p>
+
+            <select name="albumId">
+                <option value="">Svi albumi</option>
+                <option th:each="album : ${albums}"
+                        th:value="${album.id}"
+                        th:text="${album.title}"
+                        th:selected="${album.id == albumId}">
+                </option>
+            </select>
+
+            <select name="artistId">
+                <option value="">Svi izvođači</option>
+                <option th:each="artist : ${artists}"
+                        th:value="${artist.id}"
+                        th:text="${artist.name}"
+                        th:selected="${artist.id == artistId}">
+                </option>
+            </select>
+
+            <select name="genreId">
+                <option value="">Svi žanrovi</option>
+                <option th:each="genre : ${genres}"
+                        th:value="${genre.id}"
+                        th:text="${genre.name}"
+                        th:selected="${genre.id == genreId}">
+                </option>
+            </select>
+
+            <select name="explicit">
+                <option value="">Svi sadržaji</option>
+                <option th:value="${true}" th:selected="${explicit == true}">Eksplicitni</option>
+                <option th:value="${false}" th:selected="${explicit == false}">Neeksplicitni</option>
+            </select>
+        </div>
+
+        <div class="sorting">
+            <p>Sortiraj:</p>
+
+            <span>Prema:</span>
+            <select name="sortBy">
+                <option value="title" th:selected="${sortBy == 'title'}">Naslov</option>
+                <option value="duration" th:selected="${sortBy == 'duration'}">Trajanje</option>
+                <option value="releaseDate" th:selected="${sortBy == 'releaseDate'}">Datum Izdavanja</option>
+            </select>
+
+            <span>Redosled:</span>
+            <select name="sortDirection">
+                <option value="asc">Rastuće</option>
+                <option value="desc">Opadajuće</option>
+            </select>
+        </div>
+
+        <button type="submit">Pretraži</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Naslov</th>
+            <th>Trajanje</th>
+            <th>Album</th>
+            <th>Izvođač</th>
+            <th>Žanr</th>
+            <th>Datum Izdavanja</th>
+            <th>Eksplicitni sadržaj</th>
+            <th></th>
+        </tr>
+
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.id}"></td>
+            <td th:text="${song.title}"></td>
+            <td th:text="${song.duration}"></td>
+            <td>
+                <a th:text="${song.album.title}"></a>
+            </td>
+            <td>
+                <a  th:text="${song.artist.name}"></a>
+            </td>
+            <td>
+                <a  th:text="${song.genre.name}"></a>
+            </td>
+            <td th:text="${song.releaseDate}"></td>
+            <td th:text="${song.explicit?'Da':'Ne'}"></td>
+            <td>
+                <a th:href="@{/songs/edit/{id}(id=${song.id})}" class="btn btn-edit">Ažuriraj</a>
+                <a th:href="@{/songs/{id}(id=${song.id})}" class="btn btn-details">Detalji</a>
+                <a th:href="@{/songs/delete/{id}(id=${song.id})}"
+                   class="btn btn-delete"
+                   onclick="return confirm('Da li ste sigurni?')">Ukloni</a>
+            </td>
+        </tr>
+    </table>
+</main>
+</body>
+</html>

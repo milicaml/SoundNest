@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Početna">Početna</title>
+
+</head>
+<body>
+<main layout:fragment="content">
+    <header style="text-align: center; padding: 3rem 1rem; background-color: #1e2a3a; width: 100%">
+        <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem; color: #8bd3dd">SoundNest</h1>
+        <p style="font-size: 1.3rem; color: #ccc">Tvoja digitalna muzička oaza</p>
+    </header>
+
+    <div
+            style="max-width: 800px;margin: 2rem auto; text-align: center; font-size: 1.1rem; color: #1e2a3a; line-height: 1.6">
+        Dobrodošao/la na Soundify – aplikaciju koja ti omogućava da organizuješ, pretražuješ i deliš svoju omiljenu muziku na jednostavan način.
+        Kreiraj plejliste, dodaj pesme, otkrij nove zvuke i učini svaki trenutak muzički posebnim.
+    </div>
+
+    <div class="card-grid">
+        <a href="/playlists" class="card">
+            <h2>Moje Plejliste</h2>
+            <p>Pregledaj i upravljaj svojim plejlistama.</p>
+        </a>
+        <a href="/songs" class="card">
+            <h2>Sve Pesme</h2>
+            <p>Pretraži celokupnu biblioteku pesama.</p>
+        </a>
+        <a href="/songs" class="card">
+            <h2>Pretraga</h2>
+            <p>Nađi tačno onu pesmu koju tražiš.</p>
+        </a>
+        <a href="/albums" class="card">
+            <h2>Albumi</h2>
+            <p>Pretraži celokupnu biblioteku pesama po albumu.</p>
+        </a>
+        <a href="/artists" class="card">
+            <h2>Izvođači</h2>
+            <p>Pretraži svetski poznate izvođače pesama.</p>
+        </a>
+<!--        <a href="/login" class="card">-->
+<!--            <h2>Prijava</h2>-->
+<!--            <p>Uloguj se da pristupiš svojim podacima.</p>-->
+<!--        </a>-->
+<!--        <a href="/register" class="card">-->
+<!--            <h2>Registracija</h2>-->
+<!--            <p>Kreiraj nalog i započni muzičko putovanje.</p>-->
+<!--        </a>-->
+    </div>
+
+    <footer style="text-align: center;padding: 1.5rem;font-size: 0.85rem;color: #aaa">
+        <p>&copy; 2025 Soundify — Muzika po tvom ukusu.</p>
+    </footer>
+</main>
+</body>
+</html>

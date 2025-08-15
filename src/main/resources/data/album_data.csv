@@ -1,0 +1,16 @@
+album_id,album_title,release_date,artist_id,genre_id,album_type,label,cover_url,total_tracks
+0,1989,2014-10-27,0,0,Studio,Big Machine Records,/img/1989.jpg,13
+1,Evolve,2017-06-23,1,1,Studio,Interscope Records,/img/evolve.jpg,12
+2,25,2015-11-20,2,3,Studio,XL Recordings,/img/25.jpg,11
+3,Map of the Soul: 7,2020-02-21,3,9,Studio,Big Hit Entertainment,/img/mots7.jpg,20
+4,El Dorado,2017-05-26,4,6,Studio,Sony Music Latin,/img/eldorado.jpg,13
+5,A Head Full of Dreams,2015-12-04,5,1,Studio,Parlophone,/img/ahfod.jpg,11
+6,Scorpion,2018-06-29,6,2,Studio,Cash Money Records,/img/scorpion.jpg,25
+7,After Hours,2020-03-20,7,3,Studio,Republic Records,/img/afterhours.jpg,14
+8,Future Nostalgia,2020-03-27,8,0,Studio,Warner Records,/img/futurenostalgia.jpg,11
+9,Reise Reise,2004-09-27,9,8,Studio,Universal Music,/img/reisereise.jpg,11
+10,AM,2013-09-09,10,10,Studio,Domino Recording Co,/img/am.jpg,12
+11,Lemonade,2016-04-23,11,3,VisualAlbum,Parkwood Entertainment,/img/lemonade.jpg,12
+12,Divide,2017-03-03,12,0,Studio,Asylum Records,/img/divide.jpg,16
+13,The Marshall Mathers LP 2,2013-11-05,13,2,Studio,Shady Records,/img/mmlp2.jpg,21
+14,Legend,1984-05-08,14,5,Compilation,Island Records,/img/legend.jpg,14

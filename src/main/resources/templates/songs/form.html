@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Dodaj Pesmu">Dodaj Pesmu</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h1>Dodaj Pesmu</h1>
+
+    <form th:action="@{/songs}" method="post" th:object="${song}" class="add-form">
+
+        <label for="title">*Naslov:</label>
+        <input type="text" id="title" th:field="*{title}" required />
+        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red"></div>
+
+        <label for="duration">Dužina Trajanja:</label>
+        <input type='number' id="duration" th:field="*{duration}" required/>
+        <div th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}" style="color:red"></div>
+
+        <label for="album">*Album:</label>
+        <select id="album" th:field="*{album}" required>
+            <option th:value="${null}">Odaberi Album</option>
+            <option th:each="album : ${albums}"
+                    th:value="${album.id}" th:text="${album.title}"
+            >
+            </option>
+        </select>
+        <div th:if="${#fields.hasErrors('album')}" th:errors="*{album}" style="color:red"></div>
+
+        <label for="artist">*Izvođač:</label>
+        <select id="artist" th:field="*{artist}" required>
+            <option th:value="${null}">Odaberi Izvođača</option>
+            <option th:each="artist : ${artists}"
+                    th:value="${artist.id}" th:text="${artist.name}"
+            >
+            </option>
+        </select>
+        <div th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}" style="color:red"></div>
+
+        <label for="genre">*Žanr:</label>
+        <select id="genre" th:field="*{genre}" required>
+            <option th:value="${null}">Odaberi Žanr</option>
+            <option th:each="genre : ${genres}"
+                    th:value="${genre.id}" th:text="${genre.name}"
+            >
+            </option>
+        </select>
+        <div th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}" style="color:red"></div>
+
+        <label for="releaseDate">Datum izdavanja:</label>
+        <input type='date' id="releaseDate" th:field="*{releaseDate}" />
+
+        <label for="explicit">Eksplicitan sadržaj:</label>
+        <input type="checkbox" id="explicit" th:field="*{explicit}" />
+
+        <button type="submit">Sačuvaj</button>
+    </form>
+</main>
+</body>
+</html>

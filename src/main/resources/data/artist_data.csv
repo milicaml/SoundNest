@@ -1,0 +1,16 @@
+artist_id,artist_name,artist_country,artist_birthdate,artist_type,artist_active_years,artist_website,artist_image_url
+0,Taylor Swift,USA,1989-12-13,Solo,2006-present,https://www.taylorswift.com,/img/taylor.jpg
+1,Imagine Dragons,USA,2008-09-01,Band,2008-present,https://www.imaginedragonsmusic.com,/img/imaginedragons.jpg
+2,Adele,UK,1988-05-05,Solo,2006-present,https://www.adele.com,/img/adele.jpg
+3,BTS,South Korea,2013-06-13,Band,2013-present,https://ibighit.com/bts,/img/bts.jpg
+4,Shakira,Colombia,1977-02-02,Solo,1990-present,https://www.shakira.com,/img/shakira.jpg
+5,Coldplay,UK,1996-01-01,Band,1996-present,https://www.coldplay.com,/img/coldplay.jpg
+6,Drake,Canada,1986-10-24,Solo,2001-present,https://www.drakeofficial.com,/img/drake.jpg
+7,The Weeknd,Canada,1990-02-16,Solo,2010-present,https://www.theweeknd.com,/img/weeknd.jpg
+8,Dua Lipa,UK,1995-08-22,Solo,2015-present,https://www.dualipa.com,/img/dua.jpg
+9,Rammstein,Germany,1994-01-01,Band,1994-present,https://www.rammstein.de,/img/rammstein.jpg
+10,Arctic Monkeys,UK,2002-01-01,Band,2002-present,https://www.arcticmonkeys.com,/img/arcticmonkeys.jpg
+11,Beyoncé,USA,1981-09-04,Solo,1997-present,https://www.beyonce.com,/img/beyonce.jpg
+12,Ed Sheeran,UK,1991-02-17,Solo,2011-present,https://www.edsheeran.com,/img/edsheeran.jpg
+13,Eminem,USA,1972-10-17,Solo,1996-present,https://www.eminem.com,/img/eminem.jpg
+14,Bob Marley,Jamaica,1945-02-06,Solo,1962-1981,https://www.bobmarley.com,/img/bobmarley.jpg

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+  <title layout:title="Plejliste">Plejliste</title>
+</head>
+<body>
+<main layout:fragment="content">
+  <h1>Plejliste</h1>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Ime</th>
+      <th>Opis</th>
+      <th>Kreator</th>
+      <th>Datum Kreiranja</th>
+      <th>Status</th>
+      <th>Broj Pesama</th>
+      <th></th>
+    </tr>
+
+    <tr th:each="playlist : ${playlists}">
+      <td th:text="${playlist.id}"></td>
+      <td th:text="${playlist.name}"></td>
+      <td th:text="${playlist.description}"></td>
+      <td th:text="${playlist.creatorName}"></td>
+      <td th:text="${playlist.creationDate}"></td>
+      <td th:text="${playlist.publicPlaylist?'Javna':'Privatna'}"></td>
+      <td th:text="${playlist.songIds.size()}"></td>
+      <td>
+        <a th:href="@{/playlists/edit/{id}(id=${playlist.id})}" class="btn btn-edit">Ažuriraj</a>
+        <a th:href="@{/playlists/delete/{id}(id=${playlist.id})}"
+           class="btn btn-delete"
+           onclick="return confirm('Da li ste sigurni?')">Ukloni</a>
+      </td>
+    </tr>
+  </table>
+</main>
+</body>
+</html>

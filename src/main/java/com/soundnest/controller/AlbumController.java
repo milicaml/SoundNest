@@ -25,7 +25,6 @@ public class AlbumController {
         this.artistService = artistService;
         this.genreService = genreService;
     }
-    //MVC - Model - View - Controller
 
     @GetMapping
     public String getAlbums(Model model) {

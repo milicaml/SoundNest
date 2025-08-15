@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Žanrovi">Žanrovi</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h1>Žanrovi</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Ime</th>
+            <th>Opis</th>
+            <th>Zemlja Porekla</th>
+            <th>Period Porekla</th>
+            <th></th>
+        </tr>
+
+        <tr th:each="genre : ${genres}">
+            <td th:text="${genre.id}"></td>
+            <td th:text="${genre.name}"></td>
+            <td th:text="${genre.description}"></td>
+            <td th:text="${genre.originCountry}"></td>
+            <td th:text="${genre.originPeriod}"></td>
+            <td>
+                <a th:href="@{/genres/edit/{id}(id=${genre.id})}" class="btn btn-edit">Ažuriraj</a>
+                <a th:href="@{/genres/delete/{id}(id=${genre.id})}"
+                   class="btn btn-delete"
+                   onclick="return confirm('Da li ste sigurni?')">Ukloni</a>
+            </td>
+        </tr>
+    </table>
+</main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="${LAYOUT_TITLE} - My App">My App</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+    <nav class="sidebar">
+        <h2>Meni</h2>
+        <ul>
+            <li><a href="/">Početna</a></li>
+            <li>
+                <a href="/songs">Pesme</a>
+                <ul class="submenu">
+                    <li><a href="/songs/new">Dodaj pesmu</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/artists">Izvođači</a>
+                <ul class="submenu">
+                    <li><a href="/artists/new">Dodaj izvođača</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/albums">Albumi</a>
+                <ul class="submenu">
+                    <li><a href="/albums/new">Dodaj album</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/playlists">Plejliste</a>
+                <ul class="submenu">
+                    <li><a href="/playlists/new">Dodaj plejlistu</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/genres">Žanrovi</a>
+                <ul class="submenu">
+                    <li><a href="/genres/new">Dodaj žanr</a></li>
+                </ul>
+            </li>
+            <li>
+                <form th:action="@{/logout}">
+                    <button type="submit" class="btn" style="align-self: flex-end">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content" layout:fragment="content">
+        <p>Default content...</p>
+    </main>
+</div>
+</body>
+</html>

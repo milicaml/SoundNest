@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Albumi">Albumi</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h1>Albumi</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Naslov</th>
+            <th>Datum izdavanja</th>
+            <th>Izvođač</th>
+            <th>Žanr</th>
+            <th>Tip</th>
+            <th>Naziv</th>
+            <th>Slika</th>
+            <th>Pesme</th>
+            <th></th>
+        </tr>
+
+        <tr th:each="album : ${albums}">
+            <td th:text="${album.id}"></td>
+            <td th:text="${album.title}"></td>
+            <td th:text="${album.releaseDate}"></td>
+            <td>
+                <a  th:text="${album.artistId}" />
+            </td>
+            <td>
+                <a th:text="${album.genreId}" />
+            </td>
+            <td th:text="${album.type}"></td>
+            <td th:text="${album.label}"></td>
+            <td th:text="${album.coverUrl}"></td>
+            <td th:text="${album.totalTracks}"></td>
+            <td>
+                <a th:href="@{/albums/edit/{id}(id=${album.id})}" class="btn btn-edit">Ažuriraj</a>
+                <a th:href="@{/albums/delete/{id}(id=${album.id})}"
+                   class="btn btn-delete"
+                   onclick="return confirm('Da li ste sigurni?')">Ukloni</a>
+            </td>
+        </tr>
+    </table>
+</main>
+</body>
+</html> 

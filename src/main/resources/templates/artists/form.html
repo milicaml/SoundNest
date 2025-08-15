@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Dodaj Izvođača">Dodaj Izvođača</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h1>Dodaj Izvođača</h1>
+
+    <form th:action="@{/artists}" method="post" th:object="${artist}" class="add-form">
+
+        <label for="name">*Ime:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red"></div>
+
+        <label for="country">Država:</label>
+        <input type="text" id="country" th:field="*{country}" />
+
+        <label for="birthdate">*Datum Rođenja:</label>
+        <input type='date' id="birthdate" th:field="*{birthdate}" required />
+        <div th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}" style="color:red"></div>
+
+        <label for="type">*Tip Nastupa:</label>
+        <select id="type" th:field="*{type}" required>
+            <option value="Solo">Solo</option>
+            <option value="Band">Band</option>
+        </select>
+        <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}" style="color:red"></div>
+
+        <label for="activeYears">Aktivne Godine:</label>
+        <input type="text" id="activeYears" th:field="*{activeYears}" />
+
+        <label for="website">Sajt:</label>
+        <input type="text" id="website" th:field="*{website}" />
+
+        <label for="imageUrl">Slika:</label>
+        <input type="text" id="imageUrl" th:field="*{imageUrl}" />
+
+        <button type="submit">Sačuvaj</button>
+    </form>
+</main>
+</body>
+</html>

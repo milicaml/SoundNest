@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Izvođači">Izvođači</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h1>Izvođači</h1>
+
+    <form action="/artists/search" method="get" class="search-form">
+        <input type="text" name="query" placeholder="Pretraga po imenu i državi"
+               th:value="${query}"
+        />
+
+        <div class="filters">
+            <p>Filtriraj:</p>
+
+            <select name="present">
+                <option value="">Svi aktivni</option>
+                <option value="present">Trenutni</option>
+            </select>
+
+            <select name="type">
+                <option value="">Svi tipovi</option>
+                <option value="Solo">Solo</option>
+                <option value="Band">Band</option>
+            </select>
+        </div>
+
+        <div class="sorting">
+            <p>Sortiraj:</p>
+
+            <span>Prema:</span>
+            <select name="sortBy">
+                <option value="name" th:selected="${sortBy == 'name'}">Ime</option>
+                <option value="country" th:selected="${sortBy == 'country'}">Država</option>
+                <option value="birthdate" th:selected="${sortBy == 'birthdate'}">Datum Rođenja</option>
+            </select>
+
+            <span>Redosled:</span>
+            <select name="sortDirection">
+                <option value="asc">Rastuće</option>
+                <option value="desc">Opadajuće</option>
+            </select>
+        </div>
+
+        <button type="submit">Pretraži</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Ime</th>
+            <th>Država</th>
+            <th>Datum Rođenja</th>
+            <th>Tip Nastupa</th>
+            <th>Aktivne Godine</th>
+            <th>Sajt</th>
+            <th>Slika</th>
+            <th></th>
+        </tr>
+
+        <tr th:each="artist : ${artists}">
+            <td th:text="${artist.id}"></td>
+            <td th:text="${artist.name}"></td>
+            <td th:text="${artist.country}"></td>
+            <td th:text="${artist.birthdate}"></td>
+            <td th:text="${artist.type}"></td>
+            <td th:text="${artist.activeYears}"></td>
+            <td>
+                <a th:href="${artist.website}">Link</a>
+            </td>
+            <td th:text="${artist.imageUrl}"></td>
+            <td>
+                <a th:href="@{/artists/edit/{id}(id=${artist.id})}" class="btn btn-edit">Ažuriraj</a>
+                <a th:href="@{/artists/delete/{id}(id=${artist.id})}"
+                   class="btn btn-delete"
+                   onclick="return confirm('Da li ste sigurni?')">Ukloni</a>
+            </td>
+        </tr>
+    </table>
+</main>
+</body>
+</html>

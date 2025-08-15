@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <title layout:title="Pesma">Pesma</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h1>Pesma</h1>
+
+    <div class="card-grid-details">
+
+        <div class="card-details">
+            <h2>Pesma</h2>
+            <p th:text="'Naslov: ' + ${song.title}" />
+            <p th:text="'Trajanje: ' + ${song.duration}" />
+            <p th:text="'Datum izdanja: ' + ${song.releaseDate}" />
+            <p th:text="'Eksplicitni sadržaj: ' + (${song.explicit} ? 'Da' : 'Ne')" />
+        </div>
+
+        <div class="card-details">
+            <h2>Izvođač</h2>
+            <p th:text="'Ime: ' + ${artist.name}" />
+            <p th:text="'Zemlja: ' + ${artist.country}" />
+            <p th:text="'Rođen: ' + ${artist.birthdate}" />
+            <p th:text="'Tip: ' + ${artist.type}" />
+            <p th:text="'Godine aktivnosti: ' + ${artist.activeYears}" />
+            <p th:text="'Web sajt: ' + ${artist.website}" />
+            <p th:text="'Slika: ' + ${artist.imageUrl}" />
+        </div>
+
+        <div class="card-details">
+            <h2>Album</h2>
+            <p th:text="'Naziv: ' + ${album.title}" />
+            <p th:text="'Datum izdanja: ' + ${album.releaseDate}" />
+            <p th:text="'ID izvođača: ' + ${album.artistId}" />
+            <p th:text="'ID žanra: ' + ${album.genreId}" />
+            <p th:text="'Tip: ' + ${album.type}" />
+            <p th:text="'Label: ' + ${album.label}" />
+            <p th:text="'Omot: ' + ${album.coverUrl}" />
+            <p th:text="'Broj pesama: ' + ${album.totalTracks}" />
+        </div>
+
+        <div class="card-details">
+            <h2>Žanr</h2>
+            <p th:text="'Naziv: ' + ${genre.name}" />
+            <p th:text="'Opis: ' + ${genre.description}" />
+            <p th:text="'Zemlja porekla: ' + ${genre.originCountry}" />
+            <p th:text="'Period porekla: ' + ${genre.originPeriod}" />
+        </div>
+
+    </div>
+</main>
+</body>
+</html>

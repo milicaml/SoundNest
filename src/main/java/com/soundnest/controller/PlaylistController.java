@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -34,14 +35,20 @@ public class PlaylistController {
     public String newPlaylist(Model model) {
         model.addAttribute("playlist", new Playlist());
         model.addAttribute("songs", new ArrayList<>());
+        model.addAttribute("allSongs",songService.getAllSongs());
         return "playlists/form";
     }
 
     @PostMapping
-    public String savePlaylist(@ModelAttribute @Valid Playlist playlist, BindingResult bindingResult) {
+    public String savePlaylist(@ModelAttribute @Valid Playlist playlist,
+                               BindingResult bindingResult,
+                               @RequestParam(value = "songIds", required = false) List<Long> songIds,
+                               Model model) {
         if (bindingResult.hasErrors()) {
-            return "playlists/form"; // TODO : Maybe error page?
+            model.addAttribute("allSongs", songService.getAllSongs());
+            return "playlists/form";
         }
+        playlist.setSongIds(songIds != null ? songIds : new ArrayList<>());
         playlistService.addPlaylist(playlist);
         return "redirect:/playlists";
     }
@@ -52,6 +59,7 @@ public class PlaylistController {
         if (playlist.isPresent()) {
             model.addAttribute("playlist", playlist.get());
             model.addAttribute("songs", songService.getAllSongsById(playlist.get().getSongIds()));
+            model.addAttribute("allSongs",songService.getAllSongs());
             return "playlists/form";
         }
         return "redirect:/playlists";

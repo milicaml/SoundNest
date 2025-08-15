@@ -5,12 +5,12 @@ package com.soundnest.controller;
 import com.soundnest.model.SessionUser;
 import com.soundnest.model.User;
 import com.soundnest.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
@@ -19,15 +19,6 @@ import java.util.Optional;
 public class AuthController {
     private final SessionUser sessionUser;
     private final UserService userService;
-
-    @Value("${admin.username}")
-    private String adminUsername;
-
-    @Value("${admin.password}")
-    private String adminPassword;
-
-    @Value("${admin.name}")
-    private String adminName;
 
     public AuthController(SessionUser sessionUser, UserService userService) {
         this.sessionUser = sessionUser;
@@ -45,14 +36,9 @@ public class AuthController {
             @RequestParam String password,
             Model model
     ) {
-        if (username.equals(adminUsername) && password.equals(adminPassword)) {
-            sessionUser.login(new User(null, adminUsername, adminPassword, adminName), "Admin");
-            return "redirect:/";
-        }
-
         Optional<User> optionalUser = userService.login(username, password);
         if (optionalUser.isPresent()) {
-            sessionUser.login(optionalUser.get(), "User");
+            sessionUser.login(optionalUser.get());
             return "redirect:/";
         }
         model.addAttribute("username", username);
@@ -72,18 +58,21 @@ public class AuthController {
             @RequestParam String name,
             Model model
     ) {
-        if (username.equals(adminUsername) && password.equals(adminPassword)) {
-            sessionUser.login(new User(null, adminUsername, adminPassword, adminName), "Admin");
-            return "redirect:/";
-        }
-
         Optional<User> optionalUser = userService.register(username, password, name);
         if (optionalUser.isPresent()) {
+            // Registracija je uspela, šaljemo na login
             return "login";
         }
+        // Registracija nije uspela – prikazujemo stare vrednosti
         model.addAttribute("username", username);
         model.addAttribute("password", password);
         model.addAttribute("name", name);
         return "register";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // briše celu sesiju
+        return "redirect:/login";
     }
 }

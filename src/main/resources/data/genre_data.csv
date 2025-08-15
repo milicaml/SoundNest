@@ -1,0 +1,16 @@
+genre_id,genre_name,genre_description,origin_country,origin_period
+0,Pop,Popular music with catchy melodies and broad appeal,USA,1950s
+1,Rock,Emphasizes electric guitars and energetic rhythms,USA,1950s
+2,Hip-Hop,Rhythmic music with rap and street culture roots,USA,1970s
+3,R&B,Soulful vocal style with rhythm and blues influence,USA,1940s
+4,Electronic,Music using electronic instruments and synths,Germany,1970s
+5,Reggae,Jamaican music with offbeat rhythms and spiritual lyrics,Jamaica,1960s
+6,Latin,Danceable music styles from Latin America,Various,1940s
+7,Country,Acoustic guitar and storytelling vocals rooted in folk,USA,1920s
+8,Metal,Aggressive music with distorted guitars and heavy drums,UK,1970s
+9,K-Pop,Korean pop with polished production and group choreography,South Korea,1990s
+10,Indie,Independent music with DIY ethos and diverse sounds,USA/UK,1980s
+11,Classical,Orchestral music from the Western classical tradition,Europe,1700s
+12,Jazz,Improvisational music with swing and blue notes,USA,1920s
+13,Folk,Traditional cultural music passed through generations,Various,Ancient
+14,Blues,Expressive music based on emotional and melodic themes,USA,1900s
